@@ -1,0 +1,77 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Login/Signup</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+        <link rel='stylesheet prefetch' href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    </head>
+    <body>
+        <div class="cotn_principal">
+            <div class="cont_centrar">
+                <div class="cont_login">
+                    <div class="cont_info_log_sign_up">
+                        <div class="col_md_login">
+                            <div class="cont_ba_opcitiy">
+                                <h2>LOGIN</h2>  
+                                <p>Matsya onClick</p> 
+                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                            </div>
+                        </div>
+                        <div class="col_md_sign_up">
+                            <div class="cont_ba_opcitiy">
+                                <h2>SIGN UP</h2>
+                                <p>Matsya onClick</p>
+                                <button class="btn_sign_up" onclick="cambiar_sign_up()">REGISTER</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont_back_info">
+                        <div class="cont_img_back_grey">
+                            <img src="{% static 'images/1.jpg' %}" alt="" />
+                        </div>
+                       
+                    </div>
+                    <div class="cont_forms" >
+                        <div class="cont_img_back_">
+                           <img src="{% static 'images/1.jpg' %}" />
+                        </div>
+                        <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+                            <div class="cont_form_login">
+                                <a href="#" onclick="ocultar_login_sign_up()" ><i class="material-icons">&#xE5C4;</i></a>
+                                <h2>LOGIN</h2>
+                                <input type="email" placeholder="Email" name="email" required />
+                                <input type="password" placeholder="Password" name="password" required />
+                                <button class="btn_login" onclick="cambiar_login()">LOGIN</button>
+                            </div>
+                        </form>
+                        <form action="{% url 'signup' %}" method="post">{% csrf_token %}
+                            <div class="cont_form_sign_up">
+                                <a href="#" onclick="ocultar_login_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                                <h2>SIGN UP</h2>
+                                <input type="text" placeholder="First Name" name="fname" required />
+                                <input type="text" placeholder="Last Name" name="lname" required />
+                                <input type="password" placeholder="Password" name="password" required />
+                                <input type="email" placeholder="Email" name="email" required />
+                                <input type="text" placeholder="Mobile Number" name="mobile" required />
+                                <button class="btn_sign_up" onclick="cambiar_sign_up()">SIGN UP</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+        <script  src="{% static 'js/index.js'%}"></script>
+        <script>
+            $(".close").click(function () { 
+                $("div").remove('.alert-wrap'); 
+
+            }); 
+        </script>
+    </body>
+</html>

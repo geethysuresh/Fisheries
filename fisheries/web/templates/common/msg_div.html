@@ -1,0 +1,19 @@
+{% if messages %}
+    <div id="floating-top-right" class="floating-container" style="margin-top:9%;position: fixed;width: 100%;z-index: 10;float: right;">
+        {% for message in messages %}
+            <div class="alert-wrap in animated jellyIn" style="width: 50%; float: right;">
+                <div class="alert alert-{% if message.tags == 'success'%}success{% elif message.tags == 'error' %}danger{% endif %}" role="alert">
+                    <button class="close" type="button">
+                        <i class="fa fa-times-circle"></i>
+                    </button>
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="alert-title"></h4>
+                            <p class="alert-message"><strong>{{ message|safe }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
