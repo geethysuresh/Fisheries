@@ -1,0 +1,282 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Matsya onClick</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="MatsyaONclick  Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<link rel="icon" type="image/jpg" href="{% static 'images/log.jpg' %}" >
+</head>
+
+<body>
+
+<div class="super_container">
+
+	<!-- Header -->
+	{% include "common/header.html" %}
+	{% include "common/msg_div.html" %}
+	
+	<!-- Best Sellers -->
+
+	<div class="best_sellers">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_title new_arrivals_title">
+						<h2>Best Sellers</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="product_slider_container">
+					{% comment %}
+						<div class="owl-carousel owl-theme product_slider">
+
+							<!-- Slide 1 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item">
+									<div class="product discount">
+										<div class="product_image">
+											<img src="{% static 'images/Red Mullets.jpg' %}" alt="">
+										</div>
+										<div class="favorite favorite_left"></div>
+										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-Rs.20</span></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Red Mullets</a></h6>
+											<div class="product_price">Rs.520.00<span>Rs.590.00</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 2 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item women">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/Perches.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Perches </a></h6>
+											<div class="product_price">Rs.610.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 3 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item women">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/chirocentrius.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Chirocentius</a></h6>
+											<div class="product_price">Rs.120.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 4 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item accessories">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/anchovilaa.jpg' %}" alt="">
+										</div>
+										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+										<div class="favorite favorite_left"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Anchovilaa</a></h6>
+											<div class="product_price">Rs.410.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 5 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item women men">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/prawns.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Prawns</a></h6>
+											<div class="product_price">Rs.180.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 6 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item accessories">
+									<div class="product discount">
+										<div class="product_image">
+											<img src="{% static 'images/caranx.jpg' %}" alt="">
+										</div>
+										<div class="favorite favorite_left"></div>
+										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-Rs.20</span></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Caranx</a></h6>
+											<div class="product_price">Rs.520.00<span>Rs.590.00</span></div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 7 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item women">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/eels.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Eels</a></h6>
+											<div class="product_price">Rs.610.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 8 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item accessories">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/elasmobranche.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">Elasmobranche</a></h6>
+											<div class="product_price">Rs.120.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 9 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item men">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/cat.jpg' %}" alt="">
+										</div>
+										<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
+										<div class="favorite favorite_left"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">cat fish</a></h6>
+											<div class="product_price">Rs.410.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Slide 10 -->
+
+							<div class="owl-item product_slider_item">
+								<div class="product-item men">
+									<div class="product">
+										<div class="product_image">
+											<img src="{% static 'images/hemiramphus.jpg' %}" alt="">
+										</div>
+										<div class="favorite"></div>
+										<div class="product_info">
+											<h6 class="product_name"><a href="single.html">hemiramphus</a></h6>
+											<div class="product_price">Rs.180.00</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					{% endcomment %}
+						<div class="owl-carousel owl-theme product_slider">
+							{% for fish in fishes %}
+								<a href="{% url 'fish_details' fish.id %}">
+									<div class="owl-item product_slider_item">
+										<div class="product-item men">
+											<div class="product">
+												<div class="product_image">
+													<img src="{{ fish.image.url }}" alt="">
+												</div>
+												<div class="favorite"></div>
+												<div class="product_info">
+													<h6 class="product_name"><a href="single.html">{{ fish.name }}</a></h6>
+													<div class="product_price">Rs.{{ fish.price }}</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</a>
+							{% endfor %}
+						</div>
+
+						<!-- Slider Navigation -->
+
+						<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
+							<i class="fa fa-chevron-left" aria-hidden="true"></i>
+						</div>
+						<div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
+							<i class="fa fa-chevron-right" aria-hidden="true"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<!-- Footer -->
+
+	{% include "common/footer.html" %}
+
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'css/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'js/easing/easing.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script>
+  	$(".close").click(function () { 
+  		$("div").remove('.alert-wrap'); 
+
+	}); 
+</script>
+</body>
+
+</html>

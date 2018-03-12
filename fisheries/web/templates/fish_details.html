@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>{{ fish.name}}</title>
+	
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/series-label.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		</head>
+	<body>
+
+		<div class ="container">
+            <input type="hidden" name="categ" id="fish_graph_categories" value="{{fish_graph_categories}}">
+
+			<div class="row">
+				<div class="col-sm-6 col-md-6">
+				     <div id="container1"></div>
+				</div>
+				<div class="col-sm-6 col-md-6"></div>
+				<div class="col-sm-6 col-md-6"></div>
+				<div class="col-sm-6 col-md-6"></div>
+			</div>
+		</div>	
+		<script type="text/javascript">
+Highcharts.chart('container1', {
+
+    title: {
+        text: '{{ fish.name }} MARKET ANALYSIS'
+    },
+
+    //subtitle: {
+    //    text: 'Source: thesolarfoundation.com'
+    //},
+    xAxis:{
+    	// categories:['2008 quarter 2','quarter 3','quarter 4','2009 quarter 2','quarter 3','quarter 4','2010 quarter 2','quarter 3','quarter 4','2011 quarter 2','quarter 3','quarter 4','2012 quarter 2','quarter 3','quarter 4','2013 quarter 2','quarter 3','quarter 4','2014 quarter 2','quarter 3','quarter 4','2015 quarter 2','quarter 3','quarter 4'],
+        categories:  JSON.parse((document.getElementById('fish_graph_categories').value))
+    },
+
+    yAxis: {
+        title: {
+            text: 'PRICE'
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            //pointStart: 2008
+        }
+    },
+
+    series: [{
+        //name: 'quantity',
+        //data: [2.25,58,18.5,33.5,2.25,59,18,33,2.25,57,12.5,33,27.5,22,2.2,17.5,29.25,22,2.5,17.5,2.25,0,18.5,34,2.25,58,18,33.5,2.25,58,18.5]
+    //}, {
+        name: 'price',
+        // data: [821,137.8571,1350,799,146.2857,1560,778,153.4286,1765,839,164.8571,1901,176.1429,2050,909,1901,2214,902,151.8571,2228,902,283.75,2214]
+        data: {{fish_price_data}}
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 1000
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+});
+
+		</script>
+		<p> {{ fish.description }}</p>
+
+	</body>	
+</html>
