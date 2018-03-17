@@ -13,7 +13,6 @@
 
 		<div class ="container">
             <input type="hidden" name="categ" id="fish_graph_categories" value="{{fish_graph_categories}}">
-
 			<div class="row">
 				<div class="col-sm-6 col-md-6">
 				     <div id="container1"></div>
@@ -27,7 +26,8 @@
 Highcharts.chart('container1', {
 
     title: {
-        text: '{{ fish.name }} MARKET ANALYSIS'
+        text: '{{ fish.name }} Market Analysis'
+
     },
 
     //subtitle: {
@@ -37,7 +37,7 @@ Highcharts.chart('container1', {
     	// categories:['2008 quarter 2','quarter 3','quarter 4','2009 quarter 2','quarter 3','quarter 4','2010 quarter 2','quarter 3','quarter 4','2011 quarter 2','quarter 3','quarter 4','2012 quarter 2','quarter 3','quarter 4','2013 quarter 2','quarter 3','quarter 4','2014 quarter 2','quarter 3','quarter 4','2015 quarter 2','quarter 3','quarter 4'],
         categories:  JSON.parse((document.getElementById('fish_graph_categories').value))
     },
-
+        // console.log(categories);
     yAxis: {
         title: {
             text: 'PRICE'
@@ -83,6 +83,8 @@ Highcharts.chart('container1', {
     }
 
 });
+    
+    
 
 		</script>
 		<p> {{ fish.description }}</p>

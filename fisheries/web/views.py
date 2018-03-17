@@ -30,6 +30,9 @@ class MarketView(TemplateView):
 class ContactView(TemplateView):
 
     template_name = 'contact.html'
+    def post(self, request, *args, **kwargs):
+
+
 
 class LoginSignupView(TemplateView):
     template_name='index.html'
