@@ -1,0 +1,113 @@
+{% load staticfiles %}
+
+
+
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+  <title>Checkout</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <link rel="stylesheet" href="{% static 'css/stylee.css' %}">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="MatsyaONclick  Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<link rel="icon" type="image/jpg" href="{% static 'images/log.jpg' %}" >
+</head>
+
+<body>
+
+<div class="super_container">
+
+    <!-- Header -->
+    {% include "common/header.html" %}
+    {% include "common/msg_div.html" %}
+    
+      <div class="wrapper">
+    <div class="container">
+        <article class="part card-details">
+        <br/>
+        <br/>
+        
+        <br/>
+        <br/>
+            <h1>
+                Debit Card Details
+            </h1>
+            <form action="" if="cc-form" autocomplete="off">
+                <div class="group card-number">
+                    <label for="first">Card Number</label>
+                    <input type="text" id="first" class="cc-num" type="text" maxlength="4" placeholder="&#9679;&#9679;&#9679;&#9679;">
+                    <input type="text" id="second" class="cc-num" type="text" maxlength="4" placeholder=" &#9679;&#9679;&#9679;&#9679; ">
+                    <input type="text" id="third" class="cc-num" type="text" maxlength="4" placeholder=" &#9679;&#9679;&#9679;&#9679; ">
+                    <input type="text" id="fourth" class="cc-num" type="text" maxlength="4" placeholder=" &#9679;&#9679;&#9679;&#9679;">
+                </div>
+                <div class="group card-name">
+                    <label for="name">Name On Card</label>
+                    <input type="text" id="name" class="" type="text" maxlength="20" placeholder="Name Surname">
+                </div>
+                <div class="group card-expiry">
+                    <div class="input-item expiry">
+                        <label for="expiry">Expiry Date</label>
+                        <input type="text" class="month" id="expiry" maxlength="2" placeholder="02">
+                        <input type="text" class="year" id="" maxlength="4" placeholder="2018">
+                    </div>
+                    <div class="input-item csv">
+                        <label for="cvv">CVV </label><a href="#what">?</a>
+                        <input type="text" maxlength="3" class="csv">
+                    </div>
+                </div>
+                <div class="grup submit-group">
+                    <span class="arrow"></span>
+                    <input type="submit" class="submit" value="Continue to payment">
+                </div>
+            </form>
+        </article>
+        <div class="part bg"></div>
+    </div>
+</div>
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="{% static 'js/indexx.js' %}"></script>
+
+
+    <!-- Footer -->
+
+    {% include "common/footer.html" %}
+
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'css/Isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+<script src="{% static 'js/easing/easing.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script>
+    $(".close").click(function () { 
+        $("div").remove('.alert-wrap'); 
+
+    }); 
+</script>
+</body>
+
+</html>
+
+

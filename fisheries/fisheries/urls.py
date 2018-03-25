@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 
 from web.views import HomeView, ContactView, LoginSignupView, \
-CategoriesView, LoginView, UserSignup, MarketView, FishDetailsView
+CategoriesView, LoginView, UserSignup, MarketView, FishDetailsView, PayView
 
 urlpatterns = [
 
@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^contact/$', ContactView.as_view(), name='contact'),
     url(r'^login_signup/$', LoginSignupView.as_view(), name='index'),
     url(r'^categories/$', CategoriesView.as_view(),name='categories'),
+    url(r'^pay/$', PayView.as_view(),name='pay'),
     url(r'^login/$', LoginView.as_view(),name='login'),
     url(r'^signup/$', UserSignup.as_view(),name='signup'),
     url(r'^logout/$', 'web.views.logout_view', name='logout'),

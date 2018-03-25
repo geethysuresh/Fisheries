@@ -9,12 +9,19 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-from .models import Profile, Contact, FishDetail, FishGraphValue
+from .models import Profile, Contact, FishDetail, FishGraphValue, FishCategory
 
 
 class HomeView(TemplateView):
 
     template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['fish_categories'] = FishCategory.objects.all()
+        context['fish_list'] = FishDetail.objects.all()
+        return context
 
 class MarketView(TemplateView):
 
@@ -27,10 +34,15 @@ class MarketView(TemplateView):
         return context
 
 
+class PayView(TemplateView):
+
+    template_name = 'pay.html'
+
+
 class ContactView(TemplateView):
 
     template_name = 'contact.html'
-    def post(self, request, *args, **kwargs):
+    #def post(self, request, *args, **kwargs):
 
 
 

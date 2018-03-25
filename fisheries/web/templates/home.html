@@ -34,7 +34,7 @@
 					<div class="main_slider_content">
 						<font color="red"><h5>Summer Collection Available</h5>
 						<h2>Get up to 30% offer on sea fishes </h2></font>
-						<div class="red_button shop_now_button"><a href="#">shop now</a></div>
+						<div class="red_button shop_now_button"><a href="{% url 'categories' %}">shop now</a></div>
 					</div>
 				</div>
 			</div>
@@ -46,7 +46,16 @@
 	<div class="banner">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4">
+				{% for fish_category in fish_categories %}
+					<div class="col-md-4">
+						<div class="banner_item align-items-center" style="background-image:url(media/{{ fish_category.image }})">
+							<div class="banner_category">
+								<a href="">{{ fish_category.name }}</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+				<!-- <div class="col-md-4">
 					<div class="banner_item align-items-center" style="background-image:url({% static 'images/fresh.jpg' %})">
 						<div class="banner_category">
 							<a href="{% url 'categories' %}">FreshWater Fishes</a>
@@ -66,7 +75,7 @@
 							<a href="{% url 'categories' %}">SeaWater Fishes</a>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -87,9 +96,12 @@
 					<div class="new_arrivals_sorting">
 						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">freshwater fishes</li>
+							{% for fish_category in fish_categories %}
+								<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".{{fish_category.nick_name}}">{{ fish_category.name }}</li>
+							{% endfor %}
+							<!-- <li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">freshwater fishes</li>
 							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">prawns</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">sea fishes</li>
+							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">sea fishes</li> -->
 						</ul>
 					</div>
 				</div>
@@ -98,9 +110,26 @@
 				<div class="col">
 					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
 
+					{% for fish in fish_list %}
+						<div class="product-item {{fish.fish_category.nick_name}}">
+							<div class="product discount product_filter">
+								<div class="product_image">
+									<img src="{{fish.image.url}}" alt="">
+								</div>
+								<div class="favorite favorite_left"></div>
+								<!-- <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-Rs.20</span></div> -->
+								<div class="product_info">
+									<h6 class="product_name"><a href="{% url 'fish_details' fish.id %}">{{ fish.name}}</a></h6>
+									<div class="product_price">{{ fish.price }}</div>
+								</div>
+							</div>
+							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
+						</div>
+					{% endfor %}
+
 						<!-- Product 1 -->
 
-						<div class="product-item men">
+						<!-- <div class="product-item men">
 							<div class="product discount product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/anchovilaa.jpg' %}" alt="">
@@ -114,10 +143,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 2 -->
 
-						<div class="product-item women">
+						<!-- <div class="product-item women">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/fresh.jpg' %}" alt="">
@@ -131,10 +160,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 3 -->
 
-						<div class="product-item women">
+						<!-- <div class="product-item women">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/Perches.jpg' %}" alt="">
@@ -147,10 +176,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 4 -->
 
-						<div class="product-item accessories">
+						<!-- <div class="product-item accessories">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/prawns.jpg' %}" alt="">
@@ -164,10 +193,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 5 -->
 
-						<div class="product-item women men">
+						<!-- <div class="product-item women men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/hemiramphus.jpg' %}" alt="">
@@ -180,10 +209,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 6 -->
 
-						<div class="product-item accessories">
+						<!-- <div class="product-item accessories">
 							<div class="product discount product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/caranx.jpg' %}" alt="">
@@ -197,10 +226,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 7 -->
 
-						<div class="product-item women">
+						<!-- <div class="product-item women">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/elasmobranche.jpg' %}" alt="">
@@ -213,10 +242,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 8 -->
 
-						<div class="product-item accessories">
+						<!-- <div class="product-item accessories">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/Red Mullets.jpg' %}" alt="">
@@ -229,10 +258,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 9 -->
 
-						<div class="product-item men">
+						<!-- <div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/eels.jpg' %}" alt="">
@@ -246,10 +275,10 @@
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
 						</div>
-
+ -->
 						<!-- Product 10 -->
 
-						<div class="product-item men">
+						<!-- <div class="product-item men">
 							<div class="product product_filter">
 								<div class="product_image">
 									<img src="{% static 'images/chirocentrius.jpg' %}" alt="">
@@ -261,7 +290,7 @@
 								</div>
 							</div>
 							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

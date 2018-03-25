@@ -19,6 +19,16 @@ class Contact(models.Model):
     website = models.TextField(null=True, blank=True)
     message = models.TextField(null=True, blank=True)
 
+class FishCategory(models.Model):
+
+    name = models.TextField(null=True, blank=True)
+    image = models.FileField(upload_to="fish_category", null=True, blank=True)
+    nick_name = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+
+        return self.name
+
 class FishDetail(models.Model):
 
     name = models.TextField(null=True, blank=True)
@@ -26,6 +36,7 @@ class FishDetail(models.Model):
     image = models.FileField(upload_to="fish", null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     price = models.FloatField(null=True, blank=True)
+    fish_category = models.ForeignKey(FishCategory, null=True, blank=True)
 
     def __str__(self):
         return self.name
