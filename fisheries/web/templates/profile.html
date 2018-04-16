@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Matsya onClick</title>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="MatsyaONclick  Template">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main_styles.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<link rel="icon" type="image/jpg" href="{% static 'images/log.jpg' %}" >
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+</head>
+
+<body>
+
+	<div class="super_container">
+
+		<!-- Header -->
+		{% include "common/header.html" %}
+		{% include "common/msg_div.html" %}
+
+		<div class="row pad-all" style="margin-top: 170px;">
+			<div class="col-md-1"></div>
+			<div class="col-md-10 pull-right">
+				{% if user.personalcart_set.all %}
+					<table id="myTable">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cart in personal_cart %}
+								<tr>
+									<td><img style="width: 125px;" src="{{ cart.fish.image.url }}"></td>
+									<td>{{ cart.fish.name }}</td>
+									<td>{{ cart.price }}</td>
+									<td>{{ cart.quantity }}</td>
+									<td><a href="{% url 'pay' %}?cart={{cart.id}}" class="btn btn-success" >Buy Now</a></td>
+									<td><a href="{% url 'delete' %}?cart={{cart.id}}" class="btn btn-danger" >Remove</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				{% else %}
+					<div>Your cart is empty!</div>
+				{% endif %}
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+		{% include "common/footer.html" %}
+	</div>
+	<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap4/popper.js' %}"></script>
+	<script src="{% static 'js/bootstrap4/bootstrap.min.js' %}"></script>
+	<script src="{% static 'css/Isotope/isotope.pkgd.min.js' %}"></script>
+	<script src="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+	<script src="{% static 'js/easing/easing.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	<script>
+	  	$(".close").click(function () { 
+	  		$("div").remove('.alert-wrap'); 
+
+		});
+		$('#myTable').DataTable();
+	</script>
+</body>

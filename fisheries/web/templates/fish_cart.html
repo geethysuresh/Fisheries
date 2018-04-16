@@ -1,0 +1,169 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Fish Details</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Colo Shop Template">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap4/bootstrap.min.css' %}">
+		<link href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/OwlCarousel2-2.2.1/animate.css' %}">
+		<link rel="stylesheet" href="{% static 'css/themify-icons/themify-icons.css' %}">
+				
+
+		<link rel="stylesheet" type="text/css" href="{% static 'css/single_styles.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/single_responsive.css' %}">
+
+	</head>
+
+	<body>
+
+		<div class="super_container">
+
+			{% include 'common/header.html' %}
+			{% include 'common/msg_div.html' %}
+
+			<div class="container single_product_container">
+				<div class="row">
+					<div class="col">
+
+						<!-- Breadcrumbs -->
+
+						<div class="breadcrumbs d-flex flex-row align-items-center">
+							<ul>
+								<li><a href="{% url 'home' %}">Home</a></li>
+								<li><a href="{% url 'categories' %}?cat={{ fish.fish_category.id }}"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ fish.fish_category.name }}</a></li>
+								<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>{{ fish.name }}</a></li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="single_product_pics">
+							<div class="row">
+								<!-- <div class="col-lg-3 thumbnails_col order-lg-1 order-2">
+									<div class="single_product_thumbnails">
+										<ul>
+											<li><img src="{{fish.image.url}}" alt="" data-image="{{fish.image.url}}"></li>
+											<li class="active"><img src="/static/images/single_2_thumb.jpg" alt="" data-image="/static/images/single_2.jpg"></li>
+											<li><img src="/static/images/single_3_thumb.jpg" alt="" data-image="/static/images/single_3.jpg"></li>
+										</ul>
+									</div>
+								</div> -->
+								<div class="col-lg-12 image_col order-lg-2 order-1">
+									<div class="single_product_image">
+										<div class="single_product_image_background" >
+											<!-- style="background-image:url({{fish.image.url}});" -->
+											<img src="{{ fish.image.url }}">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="product_details">
+							<div class="product_details_title">
+								<h2>{{ fish.name }}</h2>
+								<p>{{ fish.description }}</p>
+							</div>
+							<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+								<span class="ti-truck"></span><span>free delivery</span>
+							</div>
+							<!-- <div class="original_price">$629.99</div> -->
+							<div class="product_price">Rs {{ fish.price }}</div>
+							<!-- <ul class="star_rating">
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star" aria-hidden="true"></i></li>
+								<li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+							</ul> -->
+							<form method="POST" action="{% url 'add-to-cart' fish.id %}" id="add-cart-form">{% csrf_token %}
+								<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+									<span>Quantity(kg):</span>
+									<div class="quantity_selector">
+										<span class="minus"><i class="fa fa-minus" aria-hidden="true"></i></span>
+										<span id="quantity_value" >1 </span>
+										<span class="plus"><i class="fa fa-plus" aria-hidden="true"></i></span>
+									</div>
+									<div class="red_button add_to_cart_button" id="add-to-cart"><a  href="#" type="submit">Add To Cart</a></div>
+									<!-- <div class="quantity d-flex flex-column flex-sm-row align-items-sm-center"> -->
+									<div class="red_button add_to_cart_button" style="display: none;" id="by-nw"><a id="buy_now" href="{% url 'pay' %}?fish={{ fish.id }}">Buy Now</a></div>
+									<!-- </div> -->
+								<!-- <div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div> -->
+								</div>
+							</form>
+							
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Tabs -->
+
+
+			{% include 'common/footer.html' %}
+
+		</div>
+
+		<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap4/popper.js' %}"></script>
+		<script src="{% static 'js/bootstrap4/bootstrap.min.js' %}"></script>
+		<script src="{% static 'css/Isotope/isotope.pkgd.min.js' %}"></script>
+		<script src="{% static 'css/OwlCarousel2-2.2.1/owl.carousel.js' %}"></script>
+		<script src="{% static 'js/easing/easing.js' %}"></script>
+		<script src="{% static 'js/jquery-ui-1.12.1.custom/jquery-ui.js' %}"></script>
+		<script src="{% static 'js/single_custom.js' %}"></script>
+		<script>
+		  	$(".close").click(function () { 
+		  		$("div").remove('.alert-wrap'); 
+
+			}); 
+		</script>
+		<script type="text/javascript">
+			$('#add-to-cart').on('click', function() {
+				// your code will come here
+				// $('#qty').val($('#quantity_value').text())
+				var csrf = $('input[name="csrfmiddlewaretoken"]').val();
+				console.log(csrf)
+				$.ajax({
+		            url: "/add-to-cart/{{fish.id}}/",
+		            // csrfmiddlewaretoken: '{{ csrf_token }}',
+		            method: "POST",        
+		            data: {
+		            	csrfmiddlewaretoken: csrf, 
+		            	'quantity': $('#quantity_value').text()
+		            },
+		            dataType: "json",
+		            success: function(data){
+		            	console.log(JSON.stringify(data));
+		            	if (data.result == 'success') {
+		            		$('#message_div_id').show();
+		            		$('#msg').text = data.msg;
+		            		$('#add-to-cart').hide();
+		            		$('#by-nw').show();
+		            		$("#buy_now").attr("href", "/pay/?cart="+data.cart);
+		            	}
+		            }, error: function(errMsg) {
+		                console.log(JSON.stringify(errMsg));
+		            }
+		        });
+				// $('#add-cart-form').submit();
+			});
+
+		</script>
+
+	</body>
+
+</html>
